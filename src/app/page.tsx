@@ -60,6 +60,13 @@ export default function HomePage() {
         <p className="text-sm text-gray-400">
           全球即時時間 · 點擊城市查看與台北的時差
         </p>
+        <p className="text-xs text-gray-300 mt-1">
+          （本資訊由{' '}
+          <a href="https://crispy.today" className="text-[#7c6dd8] hover:underline" target="_blank" rel="noopener">
+            脆新聞
+          </a>{' '}
+          提供）
+        </p>
       </div>
 
       {/* Section 1: Analog clocks */}
