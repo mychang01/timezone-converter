@@ -4,21 +4,22 @@ import { faqJsonLd } from '@/lib/seo';
 import { TAIPEI } from '@/data/cities';
 
 // Lazy load heavy client components — code splitting reduces initial JS
+// Skeleton heights match actual rendered sizes to prevent CLS
 const WorldClock = dynamic(
   () => import('@/components/world-clock').then((m) => ({ default: m.WorldClock })),
-  { loading: () => <div className="h-48 bg-gray-100 rounded-xl animate-pulse" /> }
+  { loading: () => <div style={{ minHeight: 200 }} className="bg-gray-50 rounded-xl animate-pulse" /> }
 );
 const WorldCityTable = dynamic(
   () => import('@/components/world-clock').then((m) => ({ default: m.WorldCityTable })),
-  { loading: () => <div className="h-40 bg-gray-100 rounded-xl animate-pulse" /> }
+  { loading: () => <div style={{ minHeight: 600 }} className="bg-gray-50 rounded-xl animate-pulse" /> }
 );
 const CitySelector = dynamic(
   () => import('@/components/city-selector').then((m) => ({ default: m.CitySelector })),
-  { loading: () => <div className="h-48 bg-white rounded-2xl animate-pulse" /> }
+  { loading: () => <div style={{ minHeight: 220 }} className="bg-white rounded-2xl animate-pulse max-w-lg mx-auto" /> }
 );
 const FAQSection = dynamic(
   () => import('@/components/faq-section').then((m) => ({ default: m.FAQSection })),
-  { loading: () => <div className="h-20 bg-gray-100 rounded-xl animate-pulse" /> }
+  { loading: () => <div style={{ minHeight: 300 }} className="bg-gray-50 rounded-xl animate-pulse" /> }
 );
 
 const GUIDE_LINKS = [

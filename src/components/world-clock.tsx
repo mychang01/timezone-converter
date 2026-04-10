@@ -94,17 +94,46 @@ export function WorldClock() {
     return { ...f, city, parts, timeStr, weekday, flag: city.flag };
   });
 
+  // All featured clock data (shared between mobile and desktop)
+  const allClocks = [
+    {
+      key: 'local',
+      parts: localParts,
+      label: localCity ? `📍 ${localCity.name}` : '📍 你的位置',
+      sublabel: localCity?.country,
+      timeStr: localTimeStr,
+      isNight: localHour < 6 || localHour >= 20,
+      flag: localCity?.flag || '📍',
+    },
+    ...featuredData.map((f) => ({
+      key: f.slug,
+      parts: f.parts,
+      label: `${f.flag} ${f.label}`,
+      sublabel: f.weekday,
+      timeStr: f.timeStr,
+      isNight: f.parts.h < 6 || f.parts.h >= 20,
+      flag: f.flag,
+    })),
+  ];
+
   return (
     <div>
-      {/* ===== Section 1: Featured analog clocks ===== */}
-      <div className="flex justify-center gap-3 md:gap-8 mb-10 overflow-x-auto pb-3">
+      {/* ===== Mobile: lightweight text clocks (hidden on md+) ===== */}
+      <div className="grid grid-cols-2 gap-2 mb-8 md:hidden">
+        {allClocks.map((c) => (
+          <TextClock key={c.key} label={c.label} timeStr={c.timeStr} sublabel={c.sublabel} isNight={c.isNight} />
+        ))}
+      </div>
+
+      {/* ===== Desktop: analog SVG clocks (hidden on mobile) ===== */}
+      <div className="hidden md:flex justify-center gap-8 mb-10 pb-3">
         <AnalogClock
           hour={localParts.h} minute={localParts.m} second={localParts.s}
           size={120}
-          label={localCity ? `📍 ${localCity.name}` : '📍 你的位置'}
-          sublabel={localCity?.country}
+          label={allClocks[0].label}
+          sublabel={allClocks[0].sublabel}
           timeStr={localTimeStr}
-          isNight={localHour < 6 || localHour >= 20}
+          isNight={allClocks[0].isNight}
         />
         {featuredData.map((f) => (
           <AnalogClock
@@ -245,6 +274,35 @@ export function WorldCityTable() {
           timeZone: 'UTC', month: 'long', day: 'numeric', weekday: 'short',
         })}
       </div>
+    </div>
+  );
+}
+
+/** Lightweight text clock for mobile — no SVG, no animation overhead */
+function TextClock({
+  label,
+  timeStr,
+  sublabel,
+  isNight,
+}: {
+  label: string;
+  timeStr: string;
+  sublabel?: string;
+  isNight: boolean;
+}) {
+  return (
+    <div
+      className={`rounded-xl px-3 py-2.5 ${
+        isNight ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+      } shadow-sm`}
+    >
+      <div className="text-xs font-semibold truncate">{label}</div>
+      <div className="font-mono text-xl font-bold tracking-wide">{timeStr}</div>
+      {sublabel && (
+        <div className={`text-[10px] ${isNight ? 'text-gray-400' : 'text-gray-400'}`}>
+          {sublabel}
+        </div>
+      )}
     </div>
   );
 }
