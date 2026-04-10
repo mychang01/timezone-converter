@@ -54,6 +54,16 @@ export default function GuideLayout({
           <a href="/guide/best-time-to-call" className="text-sm text-gray-500 hover:text-[#2563eb]">打國際電話的最佳時段指南</a>
           <a href="/guide/dst-explained" className="text-sm text-gray-500 hover:text-[#2563eb]">夏令時間懶人包</a>
           <a href="/guide/taiwan-flight-time-zones" className="text-sm text-gray-500 hover:text-[#2563eb]">台灣直飛航線時區總整理</a>
+          <a href="/guide/us-time-zones" className="text-sm text-gray-500 hover:text-[#2563eb]">美國四大時區完整指南</a>
+          <a href="/guide/zoom-meeting-across-timezones" className="text-sm text-gray-500 hover:text-[#2563eb]">跨時區 Zoom 會議排程攻略</a>
+          <a href="/guide/japan-travel-time" className="text-sm text-gray-500 hover:text-[#2563eb]">日本旅遊時差調整</a>
+          <a href="/guide/europe-travel-time" className="text-sm text-gray-500 hover:text-[#2563eb]">歐洲自助旅行時差全攻略</a>
+          <a href="/guide/australia-working-holiday-timezone" className="text-sm text-gray-500 hover:text-[#2563eb]">澳洲打工度假時區指南</a>
+          <a href="/guide/student-abroad-video-call" className="text-sm text-gray-500 hover:text-[#2563eb]">留學生視訊最佳時間</a>
+          <a href="/guide/digital-nomad-timezone" className="text-sm text-gray-500 hover:text-[#2563eb]">數位遊牧全球時區效率表</a>
+          <a href="/guide/utc-gmt-explained" className="text-sm text-gray-500 hover:text-[#2563eb]">UTC 和 GMT 一次搞懂</a>
+          <a href="/guide/international-date-line" className="text-sm text-gray-500 hover:text-[#2563eb]">國際換日線完整解析</a>
+          <a href="/guide/taiwan-direct-flights-2026" className="text-sm text-gray-500 hover:text-[#2563eb]">2026 台灣直飛航班時差整理</a>
         </div>
       </div>
     </div>
