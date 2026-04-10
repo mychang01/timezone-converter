@@ -11,8 +11,18 @@ const GUIDE_LINKS = [
   { href: '/guide/jet-lag-tips', label: '出國時差調整攻略' },
   { href: '/guide/best-time-to-call', label: '國際電話最佳時段' },
   { href: '/guide/dst-explained', label: '夏令時間懶人包' },
-  { href: '/guide/taiwan-flight-time-zones', label: '直飛航線時區整理' },
+  { href: '/guide/taiwan-direct-flights-2026', label: '2026 直飛航班時差' },
+  { href: '/guide/us-time-zones', label: '美國四大時區指南' },
+  { href: '/guide/europe-travel-time', label: '歐洲自助時差攻略' },
+  { href: '/guide/japan-travel-time', label: '日本旅遊時差' },
+  { href: '/guide/australia-working-holiday-timezone', label: '澳洲打工度假時區' },
+  { href: '/guide/student-abroad-video-call', label: '留學生視訊最佳時間' },
+  { href: '/guide/digital-nomad-timezone', label: '數位遊牧時區效率表' },
+  { href: '/guide/zoom-meeting-across-timezones', label: '跨時區 Zoom 排程' },
+  { href: '/guide/utc-gmt-explained', label: 'UTC 和 GMT 一次搞懂' },
+  { href: '/guide/international-date-line', label: '國際換日線完整解析' },
   { href: '/guide/remote-work-scheduling', label: '跨時區遠距排程' },
+  { href: '/guide/taiwan-flight-time-zones', label: '直飛航線時區整理' },
 ];
 
 const HOME_FAQ = [
