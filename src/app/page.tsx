@@ -2,6 +2,7 @@ import { SumikkoMascot } from '@/components/sumikko-mascot';
 import { faqJsonLd } from '@/lib/seo';
 import { TAIPEI } from '@/data/cities';
 import { WorldClock } from '@/components/world-clock';
+import { MobileClocks } from '@/components/mobile-clocks';
 import { CitySelector } from '@/components/city-selector';
 import { FAQSection } from '@/components/faq-section';
 import { StaticCityTable } from '@/components/static-city-table';
@@ -117,7 +118,8 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* Section 1: Analog clocks */}
+      {/* Section 1: Clocks — mobile gets lightweight text, desktop gets analog SVG */}
+      <MobileClocks />
       <WorldClock />
 
       {/* Section 2: Converter + Guide links */}
