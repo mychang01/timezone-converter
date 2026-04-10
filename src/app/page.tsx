@@ -111,7 +111,7 @@ export default function HomePage() {
         </p>
         <p className="text-xs text-gray-300 mt-1">
           （本資訊由{' '}
-          <a href="https://crispy.today" className="text-[#7c6dd8] hover:underline" target="_blank" rel="noopener">
+          <a href="https://crispy.today" className="text-[#2563eb] hover:underline" target="_blank" rel="noopener">
             脆新聞
           </a>{' '}
           提供）
@@ -150,7 +150,7 @@ export default function HomePage() {
                 <a
                   key={g.href}
                   href={g.href}
-                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#7c6dd8] hover:bg-purple-50 px-2 py-1.5 rounded-lg transition-colors"
+                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#2563eb] hover:bg-blue-50 px-2 py-1.5 rounded-lg transition-colors"
                 >
                   <span>{g.icon}</span>
                   <span>{g.label}</span>
@@ -170,7 +170,7 @@ export default function HomePage() {
       </div>
 
       {/* Section 5: Popular airline routes */}
-      <nav className="mt-6 pt-6 border-t border-purple-100">
+      <nav className="mt-6 pt-6 border-t border-blue-100">
         <h2 className="text-sm font-semibold text-gray-500 text-center mb-5">
           熱門航線時差查詢
         </h2>
@@ -185,7 +185,7 @@ export default function HomePage() {
                   <a
                     key={c.slug}
                     href={`/${TAIPEI.slug}-${c.slug}`}
-                    className="text-sm px-3 py-1.5 rounded-lg text-gray-600 hover:text-[#7c6dd8] hover:bg-purple-50 transition-colors"
+                    className="text-sm px-3 py-1.5 rounded-lg text-gray-600 hover:text-[#2563eb] hover:bg-blue-50 transition-colors"
                   >
                     {TAIPEI.name} → {c.name}
                   </a>

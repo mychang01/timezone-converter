@@ -107,10 +107,10 @@ export function WorldClock() {
   return (
     <div>
       {/* ===== Section 1: Featured analog clocks ===== */}
-      <div className="flex justify-center gap-4 md:gap-7 mb-8 overflow-x-auto pb-2 flex-wrap">
+      <div className="flex justify-center gap-6 md:gap-10 mb-10 overflow-x-auto pb-3 flex-wrap">
         <AnalogClock
           hour={localParts.h} minute={localParts.m} second={localParts.s}
-          size={110}
+          size={140}
           label={localCity ? `📍 ${localCity.name}` : '📍 你的位置'}
           sublabel={localCity?.country}
           timeStr={localTimeStr}
@@ -120,7 +120,7 @@ export function WorldClock() {
           <AnalogClock
             key={f.slug}
             hour={f.parts.h} minute={f.parts.m} second={f.parts.s}
-            size={110}
+            size={140}
             label={`${f.flag} ${f.label}`}
             sublabel={f.weekday}
             timeStr={f.timeStr}
@@ -237,10 +237,10 @@ function CityRow({ city, now, odd }: { city: City; now: Date; odd: boolean }) {
 
   return (
     <tr
-      className={`${odd ? 'bg-gray-50/50' : ''} ${isNight ? 'text-gray-400' : 'text-gray-700'} hover:bg-purple-50/40 transition-colors`}
+      className={`${odd ? 'bg-gray-50/50' : ''} ${isNight ? 'text-gray-400' : 'text-gray-700'} hover:bg-blue-50/40 transition-colors`}
     >
       <td className="px-4 py-2 w-[30%]">
-        <a href={href} className="hover:text-[#7c6dd8] transition-colors">
+        <a href={href} className="hover:text-[#2563eb] transition-colors">
           {city.flag} <span className="font-medium">{city.name}</span>
         </a>
       </td>

@@ -17,7 +17,7 @@ export default async function Image({
   if (!pair) {
     return new ImageResponse(
       (
-        <div style={{ fontSize: 48, background: '#7c6dd8', color: 'white', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ fontSize: 48, background: '#2563eb', color: 'white', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           時區轉換器
         </div>
       ),
@@ -40,7 +40,7 @@ export default async function Image({
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #7c6dd8, #5b8def)',
+          background: 'linear-gradient(135deg, #2563eb, #3b82f6)',
           color: 'white',
           fontFamily: 'sans-serif',
         }}

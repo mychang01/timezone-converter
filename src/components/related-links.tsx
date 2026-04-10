@@ -19,7 +19,7 @@ export function RelatedLinks({ pair }: RelatedLinksProps) {
           <a
             key={r.slug}
             href={`/${r.slug}`}
-            className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-50 hover:bg-purple-50 rounded-lg text-sm text-gray-600 hover:text-[#7c6dd8] transition-colors"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-50 hover:bg-blue-50 rounded-lg text-sm text-gray-600 hover:text-[#2563eb] transition-colors"
           >
             {r.cityA.flag} {r.cityA.name} ↔ {r.cityB.flag} {r.cityB.name}
           </a>

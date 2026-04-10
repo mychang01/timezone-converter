@@ -48,7 +48,7 @@ export function TimeDiffCard({ cityA, cityB }: TimeDiffCardProps) {
     <div className="bg-white rounded-2xl p-5 mb-5 shadow-sm flex items-stretch gap-0 max-md:flex-col overflow-hidden">
       {/* Big number */}
       <div className="flex-shrink-0 w-40 flex flex-col items-center justify-center border-r border-gray-100 pr-5 max-md:border-r-0 max-md:border-b max-md:pb-4 max-md:mb-4 max-md:w-full">
-        <div className="text-4xl font-extrabold text-[#7c6dd8] leading-none">
+        <div className="text-4xl font-extrabold text-[#2563eb] leading-none">
           {sign}
           {diff}
         </div>

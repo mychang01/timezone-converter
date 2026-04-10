@@ -133,7 +133,7 @@ export function TimelineStrip({
           <NavBtn onClick={() => shiftDay(-1)}>←</NavBtn>
           <button
             onClick={goNow}
-            className="px-3 py-1 rounded-md text-xs font-semibold text-white bg-gradient-to-r from-[#7c6dd8] to-[#5b8def] border-0 cursor-pointer hover:opacity-90 transition-opacity"
+            className="px-3 py-1 rounded-md text-xs font-semibold text-white bg-gradient-to-r from-[#2563eb] to-[#3b82f6] border-0 cursor-pointer hover:opacity-90 transition-opacity"
           >
             現在
           </button>
@@ -144,7 +144,7 @@ export function TimelineStrip({
       </div>
 
       {/* Bottom bar */}
-      <div className="flex items-center justify-center gap-3 mt-4 pt-4 border-t border-purple-100">
+      <div className="flex items-center justify-center gap-3 mt-4 pt-4 border-t border-blue-100">
         <div className="inline-flex border border-gray-200 rounded-md overflow-hidden">
           <FmtBtn active={format === 12} onClick={() => setFormat(12)}>
             12H
@@ -211,16 +211,16 @@ function TimelineRow({
               key={d.ds}
               onClick={() => onDateClick(which, d.ds)}
               className={`flex-1 min-w-[80px] flex items-center justify-center text-xs px-1 py-1 border border-gray-200 border-r-0 last:border-r bg-white cursor-pointer transition-colors whitespace-nowrap ${
-                d.isActive ? 'bg-purple-50 font-bold text-gray-700' : ''
+                d.isActive ? 'bg-blue-50 font-bold text-gray-700' : ''
               } ${d.isToday ? 'font-extrabold text-black' : ''} ${
                 d.isFuture ? 'bg-red-50/60 text-red-300' : ''
-              } hover:bg-purple-50/50`}
+              } hover:bg-blue-50/50`}
             >
               {d.label}
             </button>
           ))}
         </div>
-        <div className="w-8 shrink-0 flex items-center justify-center border border-gray-200 border-l-0 bg-white relative cursor-pointer text-gray-400 hover:text-[#7c6dd8] text-sm">
+        <div className="w-8 shrink-0 flex items-center justify-center border border-gray-200 border-l-0 bg-white relative cursor-pointer text-gray-400 hover:text-[#2563eb] text-sm">
           📅
           <input
             type="date"
@@ -241,10 +241,10 @@ function TimelineRow({
             max={287}
             value={sliderVal}
             onChange={(e) => onSlider(which, parseInt(e.target.value))}
-            className="w-full h-1 rounded bg-gradient-to-r from-purple-200 to-blue-200 appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#7c6dd8] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:cursor-grab"
+            className="w-full h-1 rounded bg-gradient-to-r from-blue-200 to-blue-200 appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#2563eb] [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:cursor-grab"
           />
           <span
-            className="absolute -top-0.5 text-[11px] text-[#7c6dd8] font-semibold bg-[#f7f6f3] px-1 pointer-events-none whitespace-nowrap"
+            className="absolute -top-0.5 text-[11px] text-[#2563eb] font-semibold bg-[#f7f6f3] px-1 pointer-events-none whitespace-nowrap"
             style={{
               left: `clamp(0px, calc(${(sliderVal / 287) * 100}% - 18px), calc(100% - 50px))`,
             }}
@@ -268,7 +268,7 @@ function NavBtn({
   return (
     <button
       onClick={onClick}
-      className="px-2.5 py-1 border border-gray-200 rounded-md bg-white text-gray-500 cursor-pointer text-xs transition-colors hover:bg-purple-50 hover:border-[#7c6dd8] hover:text-[#7c6dd8]"
+      className="px-2.5 py-1 border border-gray-200 rounded-md bg-white text-gray-500 cursor-pointer text-xs transition-colors hover:bg-blue-50 hover:border-[#2563eb] hover:text-[#2563eb]"
     >
       {children}
     </button>
@@ -288,7 +288,7 @@ function FmtBtn({
     <button
       onClick={onClick}
       className={`px-3 py-1 border-0 text-xs font-medium cursor-pointer transition-colors ${
-        active ? 'bg-[#7c6dd8] text-white' : 'bg-white text-gray-500'
+        active ? 'bg-[#2563eb] text-white' : 'bg-white text-gray-500'
       }`}
     >
       {children}

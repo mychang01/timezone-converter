@@ -44,7 +44,7 @@ export default function RootLayout({
       <head>
         {/* PWA manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#7c6dd8" />
+        <meta name="theme-color" content="#2563eb" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
         {/* #2: WebSite + SearchAction JSON-LD — enables sitelinks search box in Google */}

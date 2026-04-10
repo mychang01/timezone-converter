@@ -135,7 +135,7 @@ export default async function PairPage({
       {/* Back link */}
       <a
         href="/"
-        className="inline-flex items-center gap-1 text-sm text-[#7c6dd8] hover:text-[#5b4bc0] mb-3 transition-colors"
+        className="inline-flex items-center gap-1 text-sm text-[#2563eb] hover:text-[#1d4ed8] mb-3 transition-colors"
       >
         ← 重新選擇城市
       </a>

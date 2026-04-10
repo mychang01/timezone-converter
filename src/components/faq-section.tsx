@@ -24,7 +24,7 @@ export function FAQSection({ items }: FAQSectionProps) {
           <div key={i}>
             <button
               onClick={() => toggle(i)}
-              className="w-full text-left py-3 flex items-center justify-between gap-3 cursor-pointer text-sm font-medium text-gray-700 hover:text-[#7c6dd8] transition-colors"
+              className="w-full text-left py-3 flex items-center justify-between gap-3 cursor-pointer text-sm font-medium text-gray-700 hover:text-[#2563eb] transition-colors"
             >
               <span>{item.question}</span>
               <span

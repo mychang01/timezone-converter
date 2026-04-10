@@ -37,12 +37,12 @@ export function LifeComparison({ cityA, cityB }: LifeComparisonProps) {
                 <span className="text-base">{s.icon}</span>
                 <span>
                   {cityA.name} {s.label}{' '}
-                  <span className="font-bold text-[#7c6dd8]">{fA}</span>
+                  <span className="font-bold text-[#2563eb]">{fA}</span>
                 </span>
               </div>
               <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg text-sm text-gray-600">
                 <span className="text-base">{dayIcon(Math.floor(hB))}</span>
-                <span className="font-bold text-[#7c6dd8] min-w-[44px]">
+                <span className="font-bold text-[#2563eb] min-w-[44px]">
                   {fB}
                 </span>
                 <span>{cityB.name}</span>
