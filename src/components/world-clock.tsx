@@ -136,8 +136,17 @@ export function WorldClock() {
  * The city table grouped by continent.
  * Separated so it can be placed after the converter on the page.
  */
+// Top 20 popular cities for Taiwan users (shown by default)
+const POPULAR_SLUGS = [
+  'tokyo', 'seoul', 'hong-kong', 'singapore', 'bangkok',
+  'shanghai', 'ho-chi-minh', 'kuala-lumpur', 'sydney', 'auckland',
+  'london', 'paris', 'berlin', 'rome', 'amsterdam',
+  'new-york', 'los-angeles', 'vancouver', 'toronto', 'dubai',
+];
+
 export function WorldCityTable() {
   const [now, setNow] = useState<Date | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     setNow(new Date());
@@ -155,6 +164,16 @@ export function WorldCityTable() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  // Popular cities sorted by time diff
+  const popular = useMemo(() => {
+    if (!now) return [];
+    return POPULAR_SLUGS
+      .map((slug) => CITIES.find((c) => c.slug === slug)!)
+      .filter(Boolean)
+      .sort((a, b) => diffHours(now, TAIPEI.tz, a.tz) - diffHours(now, TAIPEI.tz, b.tz));
+  }, [now]);
+
+  // Full list grouped by continent
   const grouped = useMemo(() => {
     if (!now) return [];
     return CONTINENTS.map((cont) => {
@@ -168,8 +187,10 @@ export function WorldCityTable() {
   }, [now]);
 
   if (!now) {
-    return <div className="h-64 bg-gray-100 rounded-xl animate-pulse" />;
+    return <div className="h-40 bg-gray-100 rounded-xl animate-pulse" />;
   }
+
+  const remaining = CITIES.length - popular.length;
 
   return (
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
@@ -178,31 +199,60 @@ export function WorldCityTable() {
           各大城市時間
         </h2>
         <p className="text-xs text-gray-400 mt-0.5">
-          以台北為基準，按各洲時差排列 · 點擊城市查看詳細時差
+          以台北為基準，按時差排列 · 點擊城市查看詳細時差
         </p>
       </div>
 
-      {grouped.map((group) => (
-        <div key={group.key}>
-          {/* Continent header */}
-          <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
-            <span className="text-sm font-semibold text-gray-600">
-              {group.emoji} {group.label}
-            </span>
-            <span className="text-xs text-gray-400 ml-2">
-              {group.cities.length} 個城市
-            </span>
-          </div>
-          {/* City rows */}
-          <table className="w-full text-sm">
-            <tbody>
-              {group.cities.map((city, i) => (
-                <CityRow key={city.slug} city={city} now={now} odd={i % 2 === 1} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ))}
+      {/* Default: popular 20 cities */}
+      <table className="w-full text-sm">
+        <tbody>
+          {popular.map((city, i) => (
+            <CityRow key={city.slug} city={city} now={now} odd={i % 2 === 1} />
+          ))}
+        </tbody>
+      </table>
+
+      {/* Expand toggle */}
+      {!expanded && (
+        <button
+          onClick={() => setExpanded(true)}
+          className="w-full py-3 text-sm text-[#2563eb] hover:bg-blue-50 transition-colors cursor-pointer border-t border-gray-100 font-medium"
+        >
+          ▼ 展開全部 {CITIES.length} 個城市（按洲分組）
+        </button>
+      )}
+
+      {/* Expanded: full list by continent */}
+      {expanded && (
+        <>
+          <div className="border-t border-gray-100" />
+          {grouped.map((group) => (
+            <div key={group.key}>
+              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
+                <span className="text-sm font-semibold text-gray-600">
+                  {group.emoji} {group.label}
+                </span>
+                <span className="text-xs text-gray-400 ml-2">
+                  {group.cities.length} 個城市
+                </span>
+              </div>
+              <table className="w-full text-sm">
+                <tbody>
+                  {group.cities.map((city, i) => (
+                    <CityRow key={city.slug} city={city} now={now} odd={i % 2 === 1} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+          <button
+            onClick={() => setExpanded(false)}
+            className="w-full py-3 text-sm text-gray-400 hover:bg-gray-50 transition-colors cursor-pointer border-t border-gray-100"
+          >
+            ▲ 收合
+          </button>
+        </>
+      )}
 
       {/* UTC footer */}
       <div className="px-4 py-2 border-t border-gray-100 text-xs text-gray-400 text-center">
