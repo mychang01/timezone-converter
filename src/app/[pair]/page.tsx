@@ -69,7 +69,11 @@ export default async function PairPage({
   const { cityA, cityB } = pair;
   const faqItems = generateFAQ(cityA, cityB);
 
-  // JSON-LD structured data
+  const now = new Date();
+  const diff = diffHours(now, cityA.tz, cityB.tz);
+  const absDiff = Math.abs(diff);
+
+  // JSON-LD: WebApplication
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -80,7 +84,19 @@ export default async function PairPage({
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
   };
+
+  // JSON-LD: FAQ
   const faqLd = faqJsonLd(faqItems);
+
+  // JSON-LD: BreadcrumbList
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '世界時鐘', item: 'https://timezone.crispy.today' },
+      { '@type': 'ListItem', position: 2, name: `${cityA.name}${cityB.name}時差`, item: `https://timezone.crispy.today/${slug}` },
+    ],
+  };
 
   return (
     <main className="max-w-[960px] mx-auto px-4 py-5">
@@ -93,6 +109,10 @@ export default async function PairPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
 
       {/* Back link */}
       <a
@@ -102,10 +122,13 @@ export default async function PairPage({
         ← 重新選擇城市
       </a>
 
-      {/* Title */}
-      <h1 className="text-center text-base text-gray-500 font-medium mb-5">
-        {cityA.flag} {cityA.name}時間 至 {cityB.flag} {cityB.name}時間 轉換器
+      {/* Title — SEO: directly match search query "台北巴黎時差" */}
+      <h1 className="text-center text-xl font-bold text-gray-800 mb-1">
+        {cityA.flag} {cityA.name}{cityB.flag} {cityB.name}時差 — 即時時間對照
       </h1>
+      <p className="text-center text-sm text-gray-400 mb-5">
+        時差 {absDiff} 小時 · 即時轉換 · 最佳通話時段
+      </p>
 
       {/* Clocks */}
       <ClockDisplay cityA={cityA} cityB={cityB} format={24} />
