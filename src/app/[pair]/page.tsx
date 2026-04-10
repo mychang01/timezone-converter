@@ -9,6 +9,7 @@ import { LifeComparison } from '@/components/life-comparison';
 import { TimelineStrip } from '@/components/timeline-strip';
 import { RelatedLinks } from '@/components/related-links';
 import { SumikkoMascot } from '@/components/sumikko-mascot';
+import { TodaySummary } from '@/components/today-summary';
 import { FAQSection } from '@/components/faq-section';
 import { faqJsonLd, howToJsonLd } from '@/lib/seo';
 import { generateFAQ } from '@/data/faq-content';
@@ -149,6 +150,9 @@ export default async function PairPage({
       <p className="text-center text-sm text-gray-400 mb-5">
         時差 {absDiff} 小時 · 即時轉換 · 最佳通話時段
       </p>
+
+      {/* #6: Dynamic "today" summary — freshness signal */}
+      <TodaySummary cityA={cityA} cityB={cityB} />
 
       {/* Clocks */}
       <ClockDisplay cityA={cityA} cityB={cityB} format={24} />
