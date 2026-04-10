@@ -1,4 +1,4 @@
-import { TAIPEI, OTHER_CITIES, cityBySlug, type City } from './cities';
+import { TAIPEI, OTHER_CITIES, CITIES, cityBySlug, type City } from './cities';
 
 export interface CityPair {
   cityA: City;
@@ -62,6 +62,31 @@ export function canonicalSlug(slug: string): string | null {
     if (slug === `${b}-${a}`) return pair.slug;
   }
   return null;
+}
+
+/**
+ * Parse any valid "cityA-cityB" slug into a CityPair.
+ * Handles multi-word slugs like "new-york-los-angeles".
+ * Returns undefined if no valid parse found.
+ */
+export function parsePairSlug(slug: string): CityPair | undefined {
+  // Try known pairs first
+  const known = pairBySlug(slug);
+  if (known) return known;
+
+  // Try parsing: iterate all city slugs (longest first to handle multi-word)
+  const allCities = [...new Set(CITIES.map((c) => c))];
+  const sorted = allCities.sort((a, b) => b.slug.length - a.slug.length);
+
+  for (const ca of sorted) {
+    if (!slug.startsWith(ca.slug + '-')) continue;
+    const rest = slug.slice(ca.slug.length + 1);
+    const cb = cityBySlug(rest);
+    if (cb && cb.slug !== ca.slug) {
+      return { cityA: ca, cityB: cb, slug };
+    }
+  }
+  return undefined;
 }
 
 // Get related pairs for internal linking

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ALL_PAIRS, pairBySlug, canonicalSlug } from '@/data/city-pairs';
+import { ALL_PAIRS, parsePairSlug, type CityPair } from '@/data/city-pairs';
 import { diffHours, hasDST } from '@/lib/timezone';
 import { ClockDisplay } from '@/components/clock-display';
 import { TimeDiffCard } from '@/components/time-diff-card';
@@ -13,7 +13,7 @@ import { FAQSection } from '@/components/faq-section';
 import { faqJsonLd, howToJsonLd } from '@/lib/seo';
 import { generateFAQ } from '@/data/faq-content';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   return ALL_PAIRS.map((p) => ({ pair: p.slug }));
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ pair: string }>;
 }): Promise<Metadata> {
   const { pair: slug } = await params;
-  const pair = pairBySlug(slug);
+  const pair = parsePairSlug(slug);
   if (!pair) return {};
 
   const { cityA, cityB } = pair;
@@ -55,14 +55,9 @@ export default async function PairPage({
   params: Promise<{ pair: string }>;
 }) {
   const { pair: slug } = await params;
-  const pair = pairBySlug(slug);
+  const pair = parsePairSlug(slug);
 
   if (!pair) {
-    const canonical = canonicalSlug(slug);
-    if (canonical) {
-      // This shouldn't happen with dynamicParams=false + redirects, but just in case
-      notFound();
-    }
     notFound();
   }
 
