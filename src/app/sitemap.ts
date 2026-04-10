@@ -11,6 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const guideUrls = [
+    'jet-lag-tips',
+    'remote-work-scheduling',
+    'best-time-to-call',
+    'dst-explained',
+    'taiwan-flight-time-zones',
+  ].map((slug) => ({
+    url: `${BASE}/guide/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   return [
     {
       url: BASE,
@@ -19,5 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...pairUrls,
+    ...guideUrls,
   ];
 }

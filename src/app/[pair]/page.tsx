@@ -10,7 +10,7 @@ import { TimelineStrip } from '@/components/timeline-strip';
 import { RelatedLinks } from '@/components/related-links';
 import { SumikkoMascot } from '@/components/sumikko-mascot';
 import { FAQSection } from '@/components/faq-section';
-import { faqJsonLd } from '@/lib/seo';
+import { faqJsonLd, howToJsonLd } from '@/lib/seo';
 import { generateFAQ } from '@/data/faq-content';
 
 export const dynamicParams = false;
@@ -88,6 +88,9 @@ export default async function PairPage({
   // JSON-LD: FAQ
   const faqLd = faqJsonLd(faqItems);
 
+  // JSON-LD: HowTo
+  const howToLd = howToJsonLd(cityA, cityB, slug);
+
   // JSON-LD: BreadcrumbList
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -112,6 +115,10 @@ export default async function PairPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }}
       />
 
       {/* Back link */}
