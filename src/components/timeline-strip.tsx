@@ -35,18 +35,8 @@ export function TimelineStrip({
   // Live tick
   useEffect(() => {
     if (mode !== 'live') return;
-    let raf: number;
-    let lastSec = -1;
-    function tick() {
-      const d = new Date();
-      if (d.getSeconds() !== lastSec) {
-        lastSec = d.getSeconds();
-        setNow(d);
-      }
-      raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
   }, [mode]);
 
   const utc = mode === 'live' ? now : frozenUTC;

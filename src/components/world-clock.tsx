@@ -46,18 +46,8 @@ export function WorldClock() {
   useEffect(() => {
     setNow(new Date());
     setLocalTz(Intl.DateTimeFormat().resolvedOptions().timeZone);
-    let raf: number;
-    let lastSec = -1;
-    function tick() {
-      const d = new Date();
-      if (d.getSeconds() !== lastSec) {
-        lastSec = d.getSeconds();
-        setNow(d);
-      }
-      raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
   // Group cities by continent, sort each group by diff from Taipei
@@ -150,18 +140,8 @@ export function WorldCityTable() {
 
   useEffect(() => {
     setNow(new Date());
-    let raf: number;
-    let lastSec = -1;
-    function tick() {
-      const d = new Date();
-      if (d.getSeconds() !== lastSec) {
-        lastSec = d.getSeconds();
-        setNow(d);
-      }
-      raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
   // Popular cities sorted by time diff

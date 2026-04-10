@@ -29,19 +29,8 @@ export function ClockDisplay({ cityA, cityB, format }: ClockDisplayProps) {
 
   useEffect(() => {
     setNow(new Date());
-    let raf: number;
-    let lastSec = -1;
-    function tick() {
-      const d = new Date();
-      const sec = d.getSeconds();
-      if (sec !== lastSec) {
-        lastSec = sec;
-        setNow(d);
-      }
-      raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
   }, []);
 
   if (!now) {

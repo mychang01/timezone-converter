@@ -1,9 +1,25 @@
-import { WorldClock, WorldCityTable } from '@/components/world-clock';
-import { CitySelector } from '@/components/city-selector';
+import dynamic from 'next/dynamic';
 import { SumikkoMascot } from '@/components/sumikko-mascot';
-import { FAQSection } from '@/components/faq-section';
 import { faqJsonLd } from '@/lib/seo';
 import { TAIPEI } from '@/data/cities';
+
+// Lazy load heavy client components — code splitting reduces initial JS
+const WorldClock = dynamic(
+  () => import('@/components/world-clock').then((m) => ({ default: m.WorldClock })),
+  { loading: () => <div className="h-48 bg-gray-100 rounded-xl animate-pulse" /> }
+);
+const WorldCityTable = dynamic(
+  () => import('@/components/world-clock').then((m) => ({ default: m.WorldCityTable })),
+  { loading: () => <div className="h-40 bg-gray-100 rounded-xl animate-pulse" /> }
+);
+const CitySelector = dynamic(
+  () => import('@/components/city-selector').then((m) => ({ default: m.CitySelector })),
+  { loading: () => <div className="h-48 bg-white rounded-2xl animate-pulse" /> }
+);
+const FAQSection = dynamic(
+  () => import('@/components/faq-section').then((m) => ({ default: m.FAQSection })),
+  { loading: () => <div className="h-20 bg-gray-100 rounded-xl animate-pulse" /> }
+);
 
 const GUIDE_LINKS = [
   { href: '/guide/jet-lag-tips', label: '出國時差調整攻略' },
@@ -44,7 +60,6 @@ const HOME_FAQ = [
   },
 ];
 
-// 台灣航空直飛 + 熱門轉機目的地
 const POPULAR_LINKS: { group: string; cities: { slug: string; name: string }[] }[] = [
   {
     group: '🇺🇸 美國',
@@ -91,7 +106,6 @@ export default function HomePage() {
 
   return (
     <main id="main-content" role="main" className="max-w-[960px] mx-auto px-4 py-6">
-      {/* Homepage FAQ JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqLd) }}
@@ -121,14 +135,11 @@ export default function HomePage() {
       {/* Section 1: Analog clocks */}
       <WorldClock />
 
-      {/* Section 2: Converter + Guide links side by side */}
+      {/* Section 2: Converter + Guide links */}
       <div className="mb-8 flex gap-6 max-md:flex-col">
-        {/* Left: Converter */}
         <div className="flex-1">
           <div className="text-center mb-4">
-            <h2 className="text-lg font-bold text-gray-800">
-              時區轉換器
-            </h2>
+            <h2 className="text-lg font-bold text-gray-800">時區轉換器</h2>
             <p className="text-xs text-gray-400 mt-1">
               選擇城市，查看詳細時差、最佳通話時段
             </p>
@@ -139,12 +150,9 @@ export default function HomePage() {
             <SumikkoMascot type="rabbit" size={32} />
           </div>
         </div>
-        {/* Right: Guide links */}
         <div className="w-56 max-md:w-full shrink-0">
           <div className="bg-white rounded-2xl p-4 shadow-sm h-full">
-            <h3 className="text-sm font-bold text-gray-700 mb-3">
-              旅遊實用指南
-            </h3>
+            <h3 className="text-sm font-bold text-gray-700 mb-3">旅遊實用指南</h3>
             <div className="flex flex-col gap-1.5">
               {GUIDE_LINKS.map((g) => (
                 <a
@@ -176,9 +184,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {POPULAR_LINKS.map((group) => (
             <div key={group.group}>
-              <div className="text-xs font-semibold text-gray-400 mb-2">
-                {group.group}
-              </div>
+              <div className="text-xs font-semibold text-gray-400 mb-2">{group.group}</div>
               <div className="flex flex-col gap-1">
                 {group.cities.map((c) => (
                   <a
@@ -195,7 +201,6 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Footer */}
       <footer className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-400">
         <a href="/about" className="hover:text-[#2563eb] transition-colors">關於時區轉換器</a>
         <span className="mx-2">·</span>
