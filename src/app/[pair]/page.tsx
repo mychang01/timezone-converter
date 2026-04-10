@@ -115,6 +115,21 @@ export default async function PairPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }}
       />
+      {/* #3: Speakable — tells AI/voice which content to read */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: `${cityA.name}和${cityB.name}時差`,
+            speakable: {
+              '@type': 'SpeakableSpecification',
+              cssSelector: ['h1', '.diff-main', '.life-item', '.faq-answer'],
+            },
+          }),
+        }}
+      />
 
       {/* Back link */}
       <a

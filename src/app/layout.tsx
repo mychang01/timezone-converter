@@ -42,6 +42,47 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* #2: WebSite + SearchAction JSON-LD — enables sitelinks search box in Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: '時區轉換器',
+              url: 'https://timezone.crispy.today',
+              description: '免費世界時鐘與時差轉換工具，即時對照全球城市時間。',
+              publisher: {
+                '@type': 'Organization',
+                name: '脆新聞',
+                url: 'https://crispy.today',
+              },
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://timezone.crispy.today/taipei-{search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
+        {/* #3: Speakable JSON-LD — tells voice assistants which content to read aloud */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: '世界時鐘 — 全球時差轉換器',
+              speakable: {
+                '@type': 'SpeakableSpecification',
+                cssSelector: ['h1', 'h2', '.diff-main', '.life-item'],
+              },
+            }),
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NG6QCE7NLF"
           strategy="afterInteractive"
