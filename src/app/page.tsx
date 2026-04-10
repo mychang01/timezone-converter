@@ -1,65 +1,65 @@
-import Image from "next/image";
+import { WorldClock, WorldCityTable } from '@/components/world-clock';
+import { CitySelector } from '@/components/city-selector';
+import { SumikkoMascot } from '@/components/sumikko-mascot';
+import { OTHER_CITIES, TAIPEI } from '@/data/cities';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="max-w-[960px] mx-auto px-4 py-6">
+      {/* Header */}
+      <div className="text-center mb-5">
+        <div className="flex items-center justify-center gap-3 mb-1">
+          <SumikkoMascot type="bear" size={32} />
+          <h1 className="text-2xl font-extrabold text-gray-900">
+            🕐 世界時鐘與時差轉換
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <SumikkoMascot type="cat" size={28} />
+        </div>
+        <p className="text-sm text-gray-400">
+          全球即時時間 · 點擊城市查看與台北的時差
+        </p>
+      </div>
+
+      {/* Section 1: Analog clocks */}
+      <WorldClock />
+
+      {/* Section 2: Converter (prominent) */}
+      <div className="mb-8">
+        <div className="text-center mb-4">
+          <h2 className="text-lg font-bold text-gray-800">
+            🔄 時差轉換器
+          </h2>
+          <p className="text-xs text-gray-400 mt-1">
+            選擇城市，查看詳細時差、最佳通話時段、生活對照
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <CitySelector />
+        <div className="flex items-end justify-center gap-6 mt-4">
+          <SumikkoMascot type="penguin" size={28} />
+          <SumikkoMascot type="rabbit" size={32} />
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Section 3: City table grouped by continent */}
+      <WorldCityTable />
+
+      {/* SEO: internal links */}
+      <nav className="mt-8 pt-5 border-t border-purple-100 text-center">
+        <h2 className="text-sm font-semibold text-gray-400 mb-3">
+          熱門時差查詢
+        </h2>
+        <div className="flex flex-wrap justify-center gap-2">
+          {OTHER_CITIES.slice(0, 24).map((c) => (
+            <a
+              key={c.slug}
+              href={`/${TAIPEI.slug}-${c.slug}`}
+              className="text-xs px-2.5 py-1 bg-white rounded-md text-gray-500 hover:text-[#7c6dd8] hover:bg-purple-50 transition-colors shadow-sm"
+            >
+              {TAIPEI.name}↔{c.name}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </main>
   );
 }
