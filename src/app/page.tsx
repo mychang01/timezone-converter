@@ -194,6 +194,15 @@ export default function HomePage() {
           ))}
         </div>
       </nav>
+
+      {/* Footer */}
+      <footer className="mt-8 pt-4 border-t border-gray-200 text-center text-xs text-gray-400">
+        <a href="/about" className="hover:text-[#2563eb] transition-colors">關於時區轉換器</a>
+        <span className="mx-2">·</span>
+        <a href="https://crispy.today" className="hover:text-[#2563eb] transition-colors" target="_blank" rel="noopener">脆新聞</a>
+        <span className="mx-2">·</span>
+        <a href="https://crispy.today/contact" className="hover:text-[#2563eb] transition-colors" target="_blank" rel="noopener">聯絡我們</a>
+      </footer>
     </main>
   );
 }

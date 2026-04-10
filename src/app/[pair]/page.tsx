@@ -9,6 +9,7 @@ import { LifeComparison } from '@/components/life-comparison';
 import { TimelineStrip } from '@/components/timeline-strip';
 import { RelatedLinks } from '@/components/related-links';
 import { SumikkoMascot } from '@/components/sumikko-mascot';
+import { DirectAnswer } from '@/components/direct-answer';
 import { TodaySummary } from '@/components/today-summary';
 import { FAQSection } from '@/components/faq-section';
 import { faqJsonLd, howToJsonLd } from '@/lib/seo';
@@ -148,9 +149,12 @@ export default async function PairPage({
       <p className="text-center text-lg mb-0">
         {cityA.flag} ↔ {cityB.flag}
       </p>
-      <p className="text-center text-sm text-gray-400 mb-5">
+      <p className="text-center text-sm text-gray-400 mb-4">
         時差 {absDiff} 小時 · 即時轉換 · 最佳通話時段
       </p>
+
+      {/* AEO: Direct answer paragraph — AI engines extract this first */}
+      <DirectAnswer cityA={cityA} cityB={cityB} diff={diff} />
 
       {/* #6: Dynamic "today" summary — freshness signal */}
       <TodaySummary cityA={cityA} cityB={cityB} />
