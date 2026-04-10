@@ -7,10 +7,9 @@ import { AnalogClock } from './analog-clock';
 
 // Featured clocks
 const FEATURED_TZ = [
-  { slug: 'new-york', label: '紐約' },
-  { slug: 'london', label: '倫敦' },
   { slug: 'tokyo', label: '東京' },
-  { slug: 'sydney', label: '雪梨' },
+  { slug: 'london', label: '倫敦' },
+  { slug: 'new-york', label: '紐約' },
 ];
 
 // Continent grouping
