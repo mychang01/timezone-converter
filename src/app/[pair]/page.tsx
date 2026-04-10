@@ -38,15 +38,26 @@ export async function generateMetadata({
     ? '含夏令時間資訊。'
     : '';
 
+  const direction = diff > 0 ? 'ahead of' : diff < 0 ? 'behind' : 'same as';
+  const dstNoteEn = hasDST(cityB.tz, now.getFullYear())
+    ? ` ${cityB.slug.replace(/-/g, ' ')} observes DST.`
+    : '';
+
   return {
     title: `${cityA.name}${cityB.name}時差 — 即時時間對照`,
     description: `${cityA.name}和${cityB.name}時差${absDiff}小時。即時對照兩地時間、最佳通話時段。${dstNote}`,
+    keywords: [
+      `${cityA.name}${cityB.name}時差`,
+      `${cityA.slug} ${cityB.slug} time difference`,
+      `${cityB.slug} time zone`,
+      'timezone converter',
+    ],
     alternates: {
       canonical: `/${slug}`,
     },
     openGraph: {
-      title: `${cityA.name} ↔ ${cityB.name} 時差對照`,
-      description: `${cityA.name}和${cityB.name}時差${absDiff}小時。`,
+      title: `${cityA.name} ↔ ${cityB.name} Time Difference | 時差對照`,
+      description: `${absDiff}-hour time difference. ${cityB.slug.replace(/-/g, ' ')} is ${absDiff}h ${direction} ${cityA.slug.replace(/-/g, ' ')}.${dstNoteEn} Best calling hours, daily schedule comparison.`,
     },
   };
 }

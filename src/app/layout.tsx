@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   description:
     '免費時區轉換器，即時顯示全球 45 個城市的當地時間。支援時差對照、最佳通話時段、夏令時間查詢。',
   metadataBase: new URL('https://timezone.crispy.today'),
+  keywords: [
+    '時區轉換器', '時差', '世界時間', '台北時差',
+    'timezone converter', 'time difference', 'world clock',
+    'Taipei time', 'time zone calculator',
+  ],
   openGraph: {
     type: 'website',
     locale: 'zh_TW',
@@ -28,6 +33,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: '/',
+    languages: {
+      'zh-TW': 'https://timezone.crispy.today',
+      'x-default': 'https://timezone.crispy.today',
+    },
   },
 };
 
