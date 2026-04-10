@@ -12,7 +12,7 @@ export function RelatedLinks({ pair }: RelatedLinksProps) {
   return (
     <div className="bg-white rounded-2xl p-4 px-5 mb-4 shadow-sm">
       <h3 className="text-sm font-semibold text-gray-500 mb-3">
-        🔗 其他熱門時差查詢
+        其他熱門時差查詢
       </h3>
       <div className="flex flex-wrap gap-2">
         {related.map((r) => (

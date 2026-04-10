@@ -17,7 +17,7 @@ export function FAQSection({ items }: FAQSectionProps) {
   return (
     <div className="bg-white rounded-2xl p-4 px-5 mb-4 shadow-sm">
       <h3 className="text-sm font-semibold text-gray-500 mb-3">
-        ❓ 常見問題
+        常見問題
       </h3>
       <div className="divide-y divide-gray-100">
         {items.map((item, i) => (

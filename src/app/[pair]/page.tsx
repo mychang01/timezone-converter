@@ -131,8 +131,11 @@ export default async function PairPage({
 
       {/* Title — SEO: directly match search query "台北巴黎時差" */}
       <h1 className="text-center text-xl font-bold text-gray-800 mb-1">
-        {cityA.flag} {cityA.name}{cityB.flag} {cityB.name}時差 — 即時時間對照
+        {cityA.name}和{cityB.name}時差 — 即時時間對照
       </h1>
+      <p className="text-center text-lg mb-0">
+        {cityA.flag} ↔ {cityB.flag}
+      </p>
       <p className="text-center text-sm text-gray-400 mb-5">
         時差 {absDiff} 小時 · 即時轉換 · 最佳通話時段
       </p>

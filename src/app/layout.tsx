@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: '世界時鐘 — 全球城市現在幾點｜時區轉換器',
+    default: '世界時鐘 — 全球時差轉換器｜即時時間對照',
     template: '%s｜時區轉換器',
   },
   description:

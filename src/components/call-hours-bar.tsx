@@ -26,7 +26,7 @@ export function CallHoursBar({ cityA, cityB }: CallHoursBarProps) {
   return (
     <div className="bg-white rounded-2xl p-4 px-5 mb-4 shadow-sm">
       <h3 className="text-sm font-semibold text-gray-500 mb-3">
-        📞 最佳通話時段
+        最佳通話時段
         <span className="text-gray-400 font-normal ml-2">
           （雙方 8:00–22:00，重疊 {overlapCount} 小時）
         </span>

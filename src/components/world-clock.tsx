@@ -175,7 +175,7 @@ export function WorldCityTable() {
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
       <div className="px-4 py-3 border-b border-gray-100">
         <h2 className="text-base font-bold text-gray-700">
-          🌍 各大城市時間
+          各大城市時間
         </h2>
         <p className="text-xs text-gray-400 mt-0.5">
           以台北為基準，按各洲時差排列 · 點擊城市查看詳細時差

@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center gap-3 mb-1">
           <SumikkoMascot type="bear" size={32} />
           <h1 className="text-2xl font-extrabold text-gray-900">
-            🕐 世界時鐘與時差轉換
+            世界時鐘 — 全球時差轉換器
           </h1>
           <SumikkoMascot type="cat" size={28} />
         </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
         <div className="flex-1">
           <div className="text-center mb-4">
             <h2 className="text-lg font-bold text-gray-800">
-              🔄 時差轉換器
+              時差轉換器
             </h2>
             <p className="text-xs text-gray-400 mt-1">
               選擇城市，查看詳細時差、最佳通話時段
@@ -143,7 +143,7 @@ export default function HomePage() {
         <div className="w-56 max-md:w-full shrink-0">
           <div className="bg-white rounded-2xl p-4 shadow-sm h-full">
             <h3 className="text-sm font-bold text-gray-700 mb-3">
-              ✈️ 旅遊實用指南
+              旅遊實用指南
             </h3>
             <div className="flex flex-col gap-1.5">
               {GUIDE_LINKS.map((g) => (
@@ -172,7 +172,7 @@ export default function HomePage() {
       {/* Section 5: Popular airline routes */}
       <nav className="mt-6 pt-6 border-t border-purple-100">
         <h2 className="text-sm font-semibold text-gray-500 text-center mb-5">
-          ✈️ 熱門航線時差查詢
+          熱門航線時差查詢
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {POPULAR_LINKS.map((group) => (

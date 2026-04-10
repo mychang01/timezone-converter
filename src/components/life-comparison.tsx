@@ -24,7 +24,7 @@ export function LifeComparison({ cityA, cityB }: LifeComparisonProps) {
   return (
     <div className="bg-white rounded-2xl p-4 px-5 mb-4 shadow-sm">
       <h3 className="text-sm font-semibold text-gray-500 mb-3">
-        🏠 生活時間對照
+        生活時間對照
       </h3>
       <div className="grid grid-cols-2 gap-2 max-md:grid-cols-1">
         {SCENES.map((s) => {
