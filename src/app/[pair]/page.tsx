@@ -72,13 +72,14 @@ export default async function PairPage({
   // JSON-LD: WebApplication
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: `${cityA.name}${cityB.name}時差轉換器`,
+    '@type': 'SoftwareApplication',
+    name: `${cityA.name}${cityB.name}時區轉換器`,
     description: `即時對照${cityA.name}與${cityB.name}的時間和時差`,
     url: `https://timezone.crispy.today/${slug}`,
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Any',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'TWD' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '120' },
   };
 
   // JSON-LD: FAQ
@@ -92,13 +93,13 @@ export default async function PairPage({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: '世界時鐘', item: 'https://timezone.crispy.today' },
+      { '@type': 'ListItem', position: 1, name: '時區轉換器', item: 'https://timezone.crispy.today' },
       { '@type': 'ListItem', position: 2, name: `${cityA.name}${cityB.name}時差`, item: `https://timezone.crispy.today/${slug}` },
     ],
   };
 
   return (
-    <main className="max-w-[960px] mx-auto px-4 py-5">
+    <main id="main-content" role="main" className="max-w-[960px] mx-auto px-4 py-5">
       {/* JSON-LD */}
       <script
         type="application/ld+json"

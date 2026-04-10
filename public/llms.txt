@@ -1,0 +1,39 @@
+# 時區轉換器 — timezone.crispy.today
+
+## What this tool does
+時區轉換器 is a free online timezone converter and world clock for Traditional Chinese (zh-TW) users, primarily serving Taiwan audiences. It provides real-time time comparison between Taipei and 45+ major cities worldwide.
+
+## Core features
+- Real-time world clock with 5 analog clocks (user location, New York, London, Tokyo, Sydney)
+- Timezone converter: select any two cities and see instant time difference
+- Best calling hours: visual bar showing overlapping awake hours (8AM-10PM)
+- Life comparison: side-by-side daily schedule (wake up, lunch, work, sleep)
+- DST (Daylight Saving Time) automatic detection and display
+- Daily summary with greeting based on current time
+
+## Common questions this tool answers
+- What is the time difference between Taipei and [city]?
+- What time is it in [city] right now?
+- When is the best time to call from Taiwan to [country]?
+- Does [country] have daylight saving time?
+- How do I adjust to jet lag when traveling from Taiwan?
+
+## Data source
+All timezone calculations use the IANA Time Zone Database via the browser's built-in Intl.DateTimeFormat API. Data is always current and automatically handles DST transitions.
+
+## Coverage
+45 cities across Asia, Europe, Americas, Oceania, and Africa. All 44 Taipei-to-city pairs have dedicated pages. 20 popular non-Taipei pairs also have dedicated pages. Any valid city combination works via dynamic routing.
+
+## Content
+- 65+ city pair pages with FAQ, call hours, life comparison
+- 5 travel guide articles (jet lag tips, remote work scheduling, best calling times, DST explained, Taiwan flight routes)
+- Homepage FAQ with 7 common timezone questions
+
+## URL structure
+- Homepage: https://timezone.crispy.today
+- City pair: https://timezone.crispy.today/taipei-paris
+- Guide: https://timezone.crispy.today/guide/jet-lag-tips
+- Sitemap: https://timezone.crispy.today/sitemap.xml
+
+## Publisher
+脆新聞 (Crispy News) — https://crispy.today

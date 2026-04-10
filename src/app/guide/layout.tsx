@@ -12,7 +12,7 @@ export default function GuideLayout({
         href="/"
         className="inline-flex items-center gap-1 text-sm text-[#2563eb] hover:text-[#1d4ed8] mb-6 transition-colors"
       >
-        ← 回到世界時鐘
+        ← 回到時區轉換器
       </a>
 
       <article className="prose prose-gray prose-sm max-w-none
@@ -30,7 +30,7 @@ export default function GuideLayout({
       <div className="mt-12 pt-6 border-t border-blue-100">
         <div className="flex items-center gap-2 mb-4">
           <SumikkoMascot type="rabbit" size={28} />
-          <h3 className="text-sm font-semibold text-gray-500">試試時差轉換器</h3>
+          <h3 className="text-sm font-semibold text-gray-500">試試時區轉換器</h3>
         </div>
         <div className="flex flex-wrap gap-2">
           {OTHER_CITIES.slice(0, 12).map((c) => (

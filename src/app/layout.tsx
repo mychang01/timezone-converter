@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: '世界時鐘 — 全球時差轉換器｜即時時間對照',
+    default: '時區轉換器 — 全球時差即時對照｜即時時間對照',
     template: '%s｜時區轉換器',
   },
   description:
-    '免費世界時鐘，即時顯示全球 45 個城市的當地時間。支援時差對照、最佳通話時段、夏令時間查詢。',
+    '免費時區轉換器，即時顯示全球 45 個城市的當地時間。支援時差對照、最佳通話時段、夏令時間查詢。',
   metadataBase: new URL('https://timezone.crispy.today'),
   openGraph: {
     type: 'website',
@@ -56,7 +56,7 @@ export default function RootLayout({
               '@type': 'WebSite',
               name: '時區轉換器',
               url: 'https://timezone.crispy.today',
-              description: '免費世界時鐘與時差轉換工具，即時對照全球城市時間。',
+              description: '免費時區轉換器與時差轉換工具，即時對照全球城市時間。',
               publisher: {
                 '@type': 'Organization',
                 name: '脆新聞',
@@ -80,7 +80,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebPage',
-              name: '世界時鐘 — 全球時差轉換器',
+              name: '時區轉換器 — 全球時差即時對照',
               speakable: {
                 '@type': 'SpeakableSpecification',
                 cssSelector: ['h1', 'h2', '.diff-main', '.life-item'],
@@ -99,7 +99,12 @@ export default function RootLayout({
           gtag('config', 'G-NG6QCE7NLF');
         `}</Script>
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:text-[#2563eb] font-semibold">
+          跳到主要內容
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

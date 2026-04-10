@@ -20,7 +20,7 @@ const HOME_FAQ = [
   },
   {
     question: '台灣和美國時差多少？',
-    answer: '美國橫跨 4 個時區，所以跟台灣的時差不是一個固定數字。美東（紐約、華盛頓）跟台灣差 12-13 小時，美中（芝加哥）差 13-14 小時，山區（丹佛）差 14-15 小時，美西（洛杉磯、舊金山）差 15-16 小時。而且美國有夏令時間，夏天時差會少 1 小時。最簡單的方法是用我們的時差轉換器直接查，會自動幫你處理夏令時間的切換。',
+    answer: '美國橫跨 4 個時區，所以跟台灣的時差不是一個固定數字。美東（紐約、華盛頓）跟台灣差 12-13 小時，美中（芝加哥）差 13-14 小時，山區（丹佛）差 14-15 小時，美西（洛杉磯、舊金山）差 15-16 小時。而且美國有夏令時間，夏天時差會少 1 小時。最簡單的方法是用我們的時區轉換器直接查，會自動幫你處理夏令時間的切換。',
   },
   {
     question: '台灣和歐洲時差多少？',
@@ -31,8 +31,8 @@ const HOME_FAQ = [
     answer: '夏令時間是一些國家在夏季把時鐘撥快 1 小時的制度，目的是多利用日照。台灣自 1979 年後就沒有實施夏令時間了，全年都是 UTC+8。但你常聯繫的歐美國家幾乎都有 DST，這代表跟台灣的時差在一年中會變動 1 小時。我們的工具會自動偵測每個城市目前是標準時間還是夏令時間，頁面上會清楚標示。',
   },
   {
-    question: '怎麼用這個時差轉換器？',
-    answer: '很簡單。首頁上方有 5 個即時圓鐘顯示主要城市的時間。如果你想查特定城市跟台北的詳細時差，在「時差轉換器」區塊選擇目標城市，按「開始轉換」就會看到即時時鐘對照、時差資訊、最佳通話時段、生活時間對照等完整資訊。你也可以拖動時間滑桿來模擬不同時間點的對照結果。',
+    question: '怎麼用這個時區轉換器？',
+    answer: '很簡單。首頁上方有 5 個即時圓鐘顯示主要城市的時間。如果你想查特定城市跟台北的詳細時差，在「時區轉換器」區塊選擇目標城市，按「開始轉換」就會看到即時時鐘對照、時差資訊、最佳通話時段、生活時間對照等完整資訊。你也可以拖動時間滑桿來模擬不同時間點的對照結果。',
   },
   {
     question: '這個工具的時間準確嗎？',
@@ -90,7 +90,7 @@ export default function HomePage() {
   const homeFaqLd = faqJsonLd(HOME_FAQ);
 
   return (
-    <main className="max-w-[960px] mx-auto px-4 py-6">
+    <main id="main-content" role="main" className="max-w-[960px] mx-auto px-4 py-6">
       {/* Homepage FAQ JSON-LD */}
       <script
         type="application/ld+json"
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center gap-3 mb-1">
           <SumikkoMascot type="bear" size={32} />
           <h1 className="text-2xl font-extrabold text-gray-900">
-            世界時鐘 — 全球時差轉換器
+            時區轉換器 — 全球時差即時對照
           </h1>
           <SumikkoMascot type="cat" size={28} />
         </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
         <div className="flex-1">
           <div className="text-center mb-4">
             <h2 className="text-lg font-bold text-gray-800">
-              時差轉換器
+              時區轉換器
             </h2>
             <p className="text-xs text-gray-400 mt-1">
               選擇城市，查看詳細時差、最佳通話時段

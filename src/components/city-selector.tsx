@@ -35,7 +35,7 @@ export function CitySelector() {
   const otherCitiesB = CITIES.filter((c) => c.slug !== cityA);
 
   return (
-    <div className="bg-white rounded-2xl p-7 max-w-lg mx-auto shadow-md relative">
+    <div className="bg-white rounded-2xl p-7 max-w-lg mx-auto shadow-md relative" role="search" aria-label="時區轉換器">
       {/* From */}
       <div className="flex items-center gap-3 mb-3">
         <span className="w-8 text-right text-sm text-gray-400 font-semibold shrink-0">
@@ -44,6 +44,7 @@ export function CitySelector() {
         <select
           value={cityA}
           onChange={(e) => setCityA(e.target.value)}
+          aria-label="出發城市"
           className="flex-1 text-base px-4 py-3 border-2 border-blue-200 rounded-xl bg-gradient-to-r from-blue-50 to-blue-50 text-gray-700 font-semibold cursor-pointer transition-colors focus:outline-none focus:border-[#2563eb]"
         >
           {otherCitiesA.map((c) => (
@@ -73,6 +74,7 @@ export function CitySelector() {
         <select
           value={cityB}
           onChange={(e) => setCityB(e.target.value)}
+          aria-label="目標城市"
           className="flex-1 text-base px-4 py-3 border-2 border-gray-200 rounded-xl bg-gray-50 text-gray-700 cursor-pointer transition-colors focus:outline-none focus:border-[#2563eb]"
         >
           {otherCitiesB.map((c) => (
