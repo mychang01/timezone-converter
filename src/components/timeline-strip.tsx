@@ -116,7 +116,7 @@ export function TimelineStrip({
 
       {/* Nav buttons */}
       <div className="flex items-center mt-2">
-        <div className="w-20 shrink-0" />
+        <div className="w-14 md:w-20 shrink-0" />
         <div className="flex-1 flex items-center gap-1.5 flex-wrap">
           <NavBtn onClick={() => shiftDay(-6)}>⏪ -6天</NavBtn>
           <NavBtn onClick={() => shiftDay(-3)}>-3天</NavBtn>
@@ -170,13 +170,13 @@ function TimelineRow({
   const mins = getSliderMinutes(utc, city.tz);
   const sliderVal = Math.round(mins / 5);
 
-  const dates = Array.from({ length: 7 }, (_, i) => {
+  const dates = Array.from({ length: 5 }, (_, i) => {
     const dt = new Date(center);
-    dt.setDate(dt.getDate() + (i - 3));
+    dt.setDate(dt.getDate() + (i - 2));
     const ds = dt.toLocaleDateString('en-CA');
     return {
       ds,
-      label: `${dt.getFullYear()}年${dt.getMonth() + 1}月${dt.getDate()}日`,
+      label: `${dt.getMonth() + 1}/${dt.getDate()}`,
       isActive: ds === curDS,
       isToday: ds === todayDS,
       isFuture: ds > todayDS,
@@ -187,7 +187,7 @@ function TimelineRow({
     <>
       {/* Date row */}
       <div className="flex items-stretch mb-0.5" style={{ minHeight: 36 }}>
-        <div className="w-20 shrink-0 flex flex-col justify-center pr-2 text-right leading-tight">
+        <div className="w-14 md:w-20 shrink-0 flex flex-col justify-center pr-1 md:pr-2 text-right leading-tight">
           <span className="font-semibold text-gray-800 text-xs">
             {city.name}
           </span>
@@ -200,7 +200,7 @@ function TimelineRow({
             <button
               key={d.ds}
               onClick={() => onDateClick(which, d.ds)}
-              className={`flex-1 min-w-[80px] flex items-center justify-center text-xs px-1 py-1 border border-gray-200 border-r-0 last:border-r bg-white cursor-pointer transition-colors whitespace-nowrap ${
+              className={`flex-1 min-w-[60px] flex items-center justify-center text-xs px-1 py-1 border border-gray-200 border-r-0 last:border-r bg-white cursor-pointer transition-colors whitespace-nowrap ${
                 d.isActive ? 'bg-blue-50 font-bold text-gray-700' : ''
               } ${d.isToday ? 'font-extrabold text-black' : ''} ${
                 d.isFuture ? 'bg-red-50/60 text-red-300' : ''
@@ -223,7 +223,7 @@ function TimelineRow({
       </div>
       {/* Slider row */}
       <div className="flex items-center mb-1" style={{ minHeight: 26 }}>
-        <div className="w-20 shrink-0" />
+        <div className="w-14 md:w-20 shrink-0" />
         <div className="flex-1 relative h-7 flex items-center">
           <input
             type="range"

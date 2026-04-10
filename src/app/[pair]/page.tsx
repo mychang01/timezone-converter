@@ -111,7 +111,7 @@ export default async function PairPage({
   };
 
   return (
-    <main id="main-content" role="main" className="max-w-[960px] mx-auto px-4 py-5">
+    <main id="main-content" role="main" className="max-w-[960px] mx-auto px-4 py-5 overflow-x-hidden">
       {/* JSON-LD */}
       <script
         type="application/ld+json"
