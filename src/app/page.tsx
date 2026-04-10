@@ -6,11 +6,11 @@ import { faqJsonLd } from '@/lib/seo';
 import { TAIPEI } from '@/data/cities';
 
 const GUIDE_LINKS = [
-  { href: '/guide/jet-lag-tips', label: '出國時差調整攻略', icon: '🛫' },
-  { href: '/guide/best-time-to-call', label: '國際電話最佳時段', icon: '📞' },
-  { href: '/guide/dst-explained', label: '夏令時間懶人包', icon: '🕐' },
-  { href: '/guide/taiwan-flight-time-zones', label: '直飛航線時區整理', icon: '✈️' },
-  { href: '/guide/remote-work-scheduling', label: '跨時區遠距排程', icon: '💻' },
+  { href: '/guide/jet-lag-tips', label: '出國時差調整攻略' },
+  { href: '/guide/best-time-to-call', label: '國際電話最佳時段' },
+  { href: '/guide/dst-explained', label: '夏令時間懶人包' },
+  { href: '/guide/taiwan-flight-time-zones', label: '直飛航線時區整理' },
+  { href: '/guide/remote-work-scheduling', label: '跨時區遠距排程' },
 ];
 
 const HOME_FAQ = [
@@ -150,10 +150,9 @@ export default function HomePage() {
                 <a
                   key={g.href}
                   href={g.href}
-                  className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#2563eb] hover:bg-blue-50 px-2 py-1.5 rounded-lg transition-colors"
+                  className="text-sm text-gray-500 hover:text-[#2563eb] hover:bg-blue-50 px-2 py-1.5 rounded-lg transition-colors block"
                 >
-                  <span>{g.icon}</span>
-                  <span>{g.label}</span>
+                  {g.label}
                 </a>
               ))}
             </div>

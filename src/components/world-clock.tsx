@@ -107,10 +107,10 @@ export function WorldClock() {
   return (
     <div>
       {/* ===== Section 1: Featured analog clocks ===== */}
-      <div className="flex justify-center gap-6 md:gap-10 mb-10 overflow-x-auto pb-3 flex-wrap">
+      <div className="flex justify-center gap-3 md:gap-8 mb-10 overflow-x-auto pb-3">
         <AnalogClock
           hour={localParts.h} minute={localParts.m} second={localParts.s}
-          size={140}
+          size={120}
           label={localCity ? `📍 ${localCity.name}` : '📍 你的位置'}
           sublabel={localCity?.country}
           timeStr={localTimeStr}
@@ -120,7 +120,7 @@ export function WorldClock() {
           <AnalogClock
             key={f.slug}
             hour={f.parts.h} minute={f.parts.m} second={f.parts.s}
-            size={140}
+            size={120}
             label={`${f.flag} ${f.label}`}
             sublabel={f.weekday}
             timeStr={f.timeStr}
